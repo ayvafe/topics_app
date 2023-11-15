@@ -3,17 +3,6 @@ const TopicService = require('../../services/TopicService');
 class TopicController {
 
     // ====== TOPIC ====== //
-    static async update(req, res, next) {
-        try {
-            const { companyId } = req.state.user;
-            const company = await TopicService.update(companyId, req.body, req.context);
-
-            res.send(company);
-        } catch (e) {
-            next(e);
-        }
-    }
-
     static async getList(req, res, next) {
         try {
             const result = await TopicService.getList(req.body);

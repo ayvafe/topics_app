@@ -13,11 +13,8 @@ module.exports = (req, res, next) => {
 
     const token = authorization.replace('Bearer ', '');
 
-    const { userId, companyId } = verify(token, process.env.JWT_SECRET);
-    req.state.user = {
-        userId,
-        companyId,
-    };
+    const { userId } = verify(token, process.env.JWT_SECRET);
+    req.state.user = { userId, role };
 
     return next();
 };
